@@ -16,6 +16,7 @@ class AppConstants {
   static const String SIGNUPEMAIL = 'SIGNUPEMAIL';
   static const String SIGNUPPASSWORD = 'SIGNUPPASSWORD';
   static const String PASSWORDFIELD = 'PASSWORDFIELD';
+  static const String IEDNTIFICATIONNUMBERFIELD = 'IEDNTIFICATIONNUMBERFIELD';
   static const String EMAILFIELD = 'EMAILFIELD';
   static const String REFERRALCODEFIELD = 'REFERRALCODEFIELD';
 }

@@ -12,6 +12,7 @@ class AppColors {
   static const Color primarySecondaryBackground = Color(0xFFF7F7F9);
   static const Color loanBackgroundColor = Color(0xFFF7F7F7);
   static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color lightGreenBackgroundColor = Color(0xFFEEEEEE);
   static const Color signUpButton = Color(0xFFEFFAFF);
   static const Color whiteBGColor = Color(0xFFF4F4F4);
   static const Color inputTextGrayColor = Color(0xFFF9FAFF);

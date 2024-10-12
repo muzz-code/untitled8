@@ -51,7 +51,7 @@ BoxDecoration appBoxDecorationTextField({
   bool? inputValidity,
 }) {
   Color borderColor = (inputValidity ?? true)
-      ? AppColors.primaryFourthElementText
+      ? AppColors.lightGreenBackgroundColor
       : AppColors.danger;
 
   return BoxDecoration(

@@ -25,12 +25,17 @@ Widget appTextField({
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      textWidget ?? text12Normal(text: text, color: AppColors.black),
+      textWidget ??
+          text12Normal(
+              text: text, color: AppColors.primarySecondaryElementText),
       SizedBox(
         height: 5.h,
       ),
       Container(
-        decoration: appBoxDecorationTextField(inputValidity: inputValidity, radius: borderRadius ?? 10.0),
+        decoration: appBoxDecorationTextField(
+            inputValidity: inputValidity,
+            radius: borderRadius ?? 10.0,
+            color: AppColors.lightGreenBackgroundColor),
         child: Row(
           children: [
             Container(
@@ -41,15 +46,18 @@ Widget appTextField({
               height: textFieldHeight ?? 50.h,
               child: TextField(
                 controller: controller,
-                style: const TextStyle(color: AppColors.greyCard),
+                style: const TextStyle(
+                    color: AppColors.primarySecondaryElementText,
+                    fontFamily: 'GothamLight'),
                 onChanged: (value) => func!(value),
                 keyboardType: isNumberKeyboard == true
                     ? TextInputType.number // Set number keyboard if true
-                    : TextInputType.text, // Default keyboard type
+                    : TextInputType.text,
+                // Default keyboard type
                 decoration: InputDecoration(
                   suffixIcon: suffixIcon,
                   hintStyle: const TextStyle(
-                    color: AppColors.greyCard,
+                    color: AppColors.primarySecondaryElementText,
                     fontFamily: 'GothamLight',
                     fontSize: 15,
                   ),
@@ -78,7 +86,6 @@ Widget appTextField({
   );
 }
 
-
 Widget appTextFieldOnly({
   TextEditingController? controller,
   String hintText = "Type in your info",
@@ -91,7 +98,6 @@ Widget appTextFieldOnly({
     width: width.w,
     height: height.h,
     child: TextField(
-
       controller: controller,
       onChanged: (value) => func!(value),
       keyboardType: TextInputType.multiline,
