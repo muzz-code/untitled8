@@ -6,7 +6,7 @@ import '../utils/images_res.dart';
 
 BoxDecoration appBoxShadow({
   Color color = AppColors.primaryElement,
-  double radius = 15,
+  double radius = 10,
   double sR = 1,
   double bR = 2,
   BoxBorder? boxBorder,
@@ -46,7 +46,7 @@ BoxDecoration appBoxShadowWithRadius(
 }
 
 BoxDecoration appBoxDecorationTextField({
-  Color color = AppColors.primaryBackground,
+  Color color = AppColors.loanBackgroundColor2,
   double radius = 15,
   bool? inputValidity,
 }) {

@@ -5,12 +5,10 @@ import 'package:untitled8/core/widget/text_widgets.dart';
 
 import '../../core/constants/colors.dart';
 import 'app_shadow.dart';
-import 'image_widgets.dart';
 
 Widget appTextField({
   String text = "",
   String iconName = "",
-  String hintText = "Type in your info",
   bool obscureText = false,
   void Function(String value)? func,
   TextEditingController? controller,
@@ -24,64 +22,59 @@ Widget appTextField({
   double? textFieldWidth,
   bool? isNumberKeyboard,
 }) {
-  return Container(
-    padding: EdgeInsets.only(left: paddingLeft ?? 20.w, right: paddingRight ?? 20.w),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        textWidget ?? text14Normal(text: text),
-        SizedBox(
-          height: 5.h,
-        ),
-        Container(
-          decoration: appBoxDecorationTextField(inputValidity: inputValidity, radius: borderRadius ?? 10.0),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 17.w),
-                child: appImage(imagePath: iconName),
-              ),
-              SizedBox(
-                width: textFieldWidth ?? 280.w,
-                height: textFieldHeight ?? 50.h,
-                child: TextField(
-                  controller: controller,
-                  style: const TextStyle(color: AppColors.hintTextColor),
-                  onChanged: (value) => func!(value),
-                  keyboardType: isNumberKeyboard == true
-                      ? TextInputType.number // Set number keyboard if true
-                      : TextInputType.text, // Default keyboard type
-                  decoration: InputDecoration(
-                    suffixIcon: suffixIcon,
-                    hintText: hintText,
-                    hintStyle: const TextStyle(
-                      color: AppColors.hintTextColor,
-                      fontFamily: 'GothamLight',
-                      fontSize: 15,
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    disabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      textWidget ?? text12Normal(text: text, color: AppColors.black),
+      SizedBox(
+        height: 5.h,
+      ),
+      Container(
+        decoration: appBoxDecorationTextField(inputValidity: inputValidity, radius: borderRadius ?? 10.0),
+        child: Row(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 17.w),
+            ),
+            SizedBox(
+              width: textFieldWidth ?? 280.w,
+              height: textFieldHeight ?? 50.h,
+              child: TextField(
+                controller: controller,
+                style: const TextStyle(color: AppColors.greyCard),
+                onChanged: (value) => func!(value),
+                keyboardType: isNumberKeyboard == true
+                    ? TextInputType.number // Set number keyboard if true
+                    : TextInputType.text, // Default keyboard type
+                decoration: InputDecoration(
+                  suffixIcon: suffixIcon,
+                  hintStyle: const TextStyle(
+                    color: AppColors.greyCard,
+                    fontFamily: 'GothamLight',
+                    fontSize: 15,
                   ),
-                  maxLines: 1,
-                  autocorrect: false,
-                  obscureText: obscureText,
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  disabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
                 ),
-              )
-            ],
-          ),
-        )
-      ],
-    ),
+                maxLines: 1,
+                autocorrect: false,
+                obscureText: obscureText,
+              ),
+            )
+          ],
+        ),
+      )
+    ],
   );
 }
 

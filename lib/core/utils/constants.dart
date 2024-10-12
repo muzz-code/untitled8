@@ -7,6 +7,7 @@ class AppConstants {
   static const String ACCOUNTVISIBILITY = "ACCOUNTVISIBILITY";
   static const String USER = 'USER';
   static const String LOGINSTATE = 'LOGINSTATE';
+  static const String SIGNUPSTATE = 'SIGNUPSTATE';
   static const String TEMPUSER = 'TEMPUSER';
   static const String FIRSTNAME = 'FIRSTNAME';
   static const String LASTNAME = 'LASTNAME';
@@ -16,4 +17,5 @@ class AppConstants {
   static const String SIGNUPPASSWORD = 'SIGNUPPASSWORD';
   static const String PASSWORDFIELD = 'PASSWORDFIELD';
   static const String EMAILFIELD = 'EMAILFIELD';
+  static const String REFERRALCODEFIELD = 'REFERRALCODEFIELD';
 }

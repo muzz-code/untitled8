@@ -92,7 +92,7 @@ buildCustomCircularProgressIndicator() {
             width: 180.0,
             height: 180.0,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.black,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: const Center(

@@ -100,6 +100,21 @@ Widget text12Normal(
   );
 }
 
+Widget text10Bold(
+    {String text = "",
+    Color color = AppColors.textColorLightPurple,
+    String? fontFamily = 'GothamMedium'}) {
+  return Text(
+    text,
+    textAlign: TextAlign.start,
+    style: TextStyle(
+        color: color,
+        fontSize: 10.sp,
+        fontWeight: FontWeight.w500,
+        fontFamily: fontFamily),
+  );
+}
+
 Widget text14Bold(
     {String text = "",
     Color color = AppColors.textColorLightPurple,
@@ -133,11 +148,15 @@ Widget text14Medium(
 Widget text14Normal(
     {String text = "",
     Color color = AppColors.textColorLightPurple,
+    bool allowTextDecoration = false,
     String? fontFamily = 'GothamLight'}) {
   return Text(
     text,
     textAlign: TextAlign.start,
     style: TextStyle(
+        decoration: allowTextDecoration
+            ? TextDecoration.underline
+            : TextDecoration.none,
         color: color,
         fontSize: 14.sp,
         fontWeight: FontWeight.w900,
@@ -163,22 +182,80 @@ Widget text10Normal(
   );
 }
 
-Widget text25Heading({String text = "", Color color = AppColors.black}) {
-  return Text(
-    text,
-    textAlign: TextAlign.center,
-    style: TextStyle(
-      color: color,
-      fontFamily: 'GothamMedium',
-      fontSize: 25,
-    ),
+Widget text24Heading(
+    {String text = "",
+    Color color = AppColors.black,
+    String iconName = "",
+    double width = 16,
+    bool requiredPrefixIcon = false,
+    double height = 16}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: color,
+          fontFamily: 'GothamBold',
+          fontSize: 20,
+        ),
+      ),
+      requiredPrefixIcon
+          ? Container(
+              // width: 24,
+              margin: EdgeInsets.only(left: 8.w),
+              child: appImage(
+                imagePath: iconName,
+                width: width,
+                height: height,
+              ),
+            )
+          : const SizedBox(
+              height: 0,
+            ),
+    ],
+  );
+}
+
+Widget text25Heading(
+    {String text = "",
+    Color color = AppColors.black,
+    String iconName = "",
+    double width = 16,
+    bool requiredPrefixIcon = false,
+    double height = 16}) {
+  return Row(
+    children: [
+      Text(
+        text,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: color,
+          fontFamily: 'GothamBold',
+          fontSize: 25,
+        ),
+      ),
+      requiredPrefixIcon
+          ? Container(
+              // width: 24,
+              margin: EdgeInsets.only(left: 8.w),
+              child: appImage(
+                imagePath: iconName,
+                width: width,
+                height: height,
+              ),
+            )
+          : const SizedBox(
+              height: 0,
+            ),
+    ],
   );
 }
 
 Widget text18Heading(
     {String text = "",
     Color color = AppColors.primaryText,
-    String iconName = "",
     double width = 16,
     double height = 16}) {
   return Row(
@@ -190,15 +267,6 @@ Widget text18Heading(
           color: color,
           fontFamily: 'GothamMedium',
           fontSize: 18,
-        ),
-      ),
-      Container(
-        // width: 24,
-        margin: EdgeInsets.only(left: 8.w),
-        child: appImage(
-          imagePath: iconName,
-          width: width,
-          height: height,
         ),
       ),
     ],

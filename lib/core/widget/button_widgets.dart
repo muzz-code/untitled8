@@ -10,13 +10,15 @@ Widget appButton({
   String buttonName = "",
   bool isLogin = true,
   BuildContext? context,
-  dynamic Function()? func, // Accept a function that can return a Future
+  Color? buttonColor,
+  Color? textColor,
+  dynamic Function()? func,
   WidgetBuilder? pageBuilder,
 }) {
   return GestureDetector(
     onTap: () async {
       if (func != null) {
-        await func(); // Wait for the Future to complete
+        await func();
       } else if (pageBuilder != null && context != null) {
         await pushFadeInRoute(context, pageBuilder: pageBuilder);
       }
@@ -25,19 +27,18 @@ Widget appButton({
       width: double.infinity,
       height: height.h,
       decoration: appBoxShadow(
-          color: isLogin ? AppColors.unionBlueColor : Colors.white,
-          boxBorder: Border.all(color: AppColors.primaryFourthElementText)),
+        color: buttonColor ?? Colors.black,
+      ),
       child: Center(
-          child: text16Normal(
+          child: text14Medium(
               text: buttonName,
-              color: isLogin
-                  ? AppColors.primaryBackground
-                  : AppColors.primaryText)),
+              color: textColor ?? Colors.black)),
     ),
   );
 }
 
-Future<T?> pushFadeInRoute<T>(BuildContext context, {
+Future<T?> pushFadeInRoute<T>(
+  BuildContext context, {
   required WidgetBuilder pageBuilder,
 }) {
   return Navigator.of(context).push<T>(

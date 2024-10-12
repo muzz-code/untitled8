@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:untitled8/authentication/models/signup_state.dart';
 import '../../authentication/models/login_state.dart';
 import '../models/user_profile.dart';
 import '../utils/constants.dart';
@@ -74,9 +75,33 @@ class Storage {
     }
     return null;
   }
+  static Future<void> saveSignupState(SignupState state) async {
+    final jsonString = jsonEncode(state.toJson());
+    print("signup state $state");
+    await secureStorage.write(
+        key: AppConstants.SIGNUPSTATE,
+        value: jsonString,
+        aOptions: _getAndroidOptions(),
+        iOptions: _getIOSOptions());
+  }
+
+  static Future<SignupState?> loadSignupState() async {
+    final jsonString = await secureStorage.read(
+        key: AppConstants.SIGNUPSTATE,
+        aOptions: _getAndroidOptions(),
+        iOptions: _getIOSOptions());
+    if (jsonString != null) {
+      return SignupState.fromJson(jsonDecode(jsonString));
+    }
+    return null;
+  }
 
   static Future<bool> isLoggedIn() async {
     final isLoggedIn = await loadLoginState();
     return isLoggedIn != null ? true : false;
+  }
+  static Future<bool> isSignedIn() async {
+    final isSignedUp = await loadSignupState();
+    return isSignedUp != null ? true : false;
   }
 }

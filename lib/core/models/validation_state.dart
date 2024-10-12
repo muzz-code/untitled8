@@ -6,6 +6,7 @@ class ValidationState {
   final bool isWelcomeBackEmailFieldValid;
   final bool isWelcomeBackPasswordFieldValid;
   final bool isEmailFieldValid;
+  final bool isReferralCodeFieldValid;
   final bool isValidInputs;
 
   ValidationState({
@@ -16,6 +17,7 @@ class ValidationState {
     this.isFirstNameFieldValid = true,
     this.isPasswordFieldValid = true,
     this.isEmailFieldValid = true,
+    this.isReferralCodeFieldValid = true,
     this.isValidInputs = false,
   });
 
@@ -27,6 +29,7 @@ class ValidationState {
     bool? isWelcomeBackEmailFieldValid,
     bool? isWelcomeBackPasswordFieldValid,
     bool? isEmailFieldValid,
+    bool? isReferralCodeFieldValid,
     bool? isValidInputs,
   }) {
     return ValidationState(
@@ -37,6 +40,7 @@ class ValidationState {
       isWelcomeBackEmailFieldValid: isWelcomeBackEmailFieldValid ?? this.isWelcomeBackEmailFieldValid,
       isWelcomeBackPasswordFieldValid: isWelcomeBackPasswordFieldValid ?? this.isWelcomeBackPasswordFieldValid,
       isEmailFieldValid: isEmailFieldValid ?? this.isEmailFieldValid,
+      isReferralCodeFieldValid: isReferralCodeFieldValid ?? this.isReferralCodeFieldValid,
       isValidInputs: isValidInputs ?? this.isValidInputs,
     );
   }

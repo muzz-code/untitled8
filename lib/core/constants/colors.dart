@@ -35,8 +35,9 @@ class AppColors {
   static const Color cardSkyBlue = Color(0xFFE5F7FF);
   static const Color greyCard = Color(0xFFF5F5F5);
   static const Color primaryFourthElementText = Color(0xFFCCCCCC);
-  static const Color dividerLineGrey = Color(0xFFEDEDF2);
+  static const Color greyText = Color(0xFF34373F);
   static const Color borderColorGrey = Color(0xffACACBE);
+  static const Color dividerLineGrey = Color(0xFFEDEDF2);
   static const Color questionOptionBorderColor = Color(0xFFB3D4FF);
   static const Color textColorGrey = Color(0xff667085);
   static const Color grayColor = Color(0xFF8993A4);
@@ -45,6 +46,7 @@ class AppColors {
   static const Color primarySecondaryElementText = Color(0xFF666666);
   static const Color border = Color(0xff505254);
   static const Color loanBackgroundColor2 = Color(0x4FA3A3A3);
+  static const Color greyLetters = Color(0x4F34373F);
   static const Color textColor200 = Color(0xFF6B778C);
   static const Color buttonDisabledColor = Color(0x0D9FDFDE);
   static const Color lightGreyBtn = Color(0xFF1E2226);
@@ -68,10 +70,8 @@ class AppColors {
   static const Color textColor263F67 = Color(0xFF263F67);
   static const Color chatSendButton = Color(0xFF1B365D);
   static const Color textColor800 = Color(0xFF172B4D);
-  static const Color textColorF67 = Color(0xFF263F67);
   static const Color secondaryColor = Color(0xFF172B4D);
   static const Color textHeader2850 = Color(0xFF192850);
-  static const Color textHeader1E22 = Color(0xFF151E22);
   static const Color subtitleTextColor = Color(0xFF172B4D);
   static const Color darkNaviBlue = Color(0xFF091E42);
   static const Color investmentMixNote = Color(0xFF051288);
@@ -94,6 +94,7 @@ class AppColors {
   static const Color treasuryBillsColor = Color(0xFF36B37E);
   static const Color success = Color(0xff04B616);
   static const Color primaryElementStatus = Color(0xFF58AE7F);
+  static const Color greenButton = Color(0xFF408A4E);
   static const Color cardColorGreen = Color(0xFF91C44D);
   static const Color pieChartGreen = Color(0xFF96EDC6);
   static const Color greenCard = Color(0xFFD4FCEA);

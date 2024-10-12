@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled8/authentication/screens/signup_screen.dart';
 import '../../core/constants/colors.dart';
 import '../../core/provider/global_loader.dart';
+import '../../core/utils/images_res.dart';
 import '../../core/widget/app_textfields.dart';
 import '../../core/widget/button_widgets.dart';
 import '../../core/widget/popup_messages.dart';
@@ -29,6 +33,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   void initState() {
     super.initState();
+    log("login screen called");
     _loginController = LoginController(ref: ref);
   }
 
@@ -40,21 +45,23 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final loader = ref.watch(appLoaderProvider);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(top: 54.0, bottom: 36.0),
+              padding: const EdgeInsets.only(
+                  top: 54.0, bottom: 36.0, right: 20, left: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Align(
                     child: Column(
                       children: [
-                        text25Heading(text: "Welcome back"),
-                        text15Normal(
-                            text: "Please provide your login credentials"),
+                        text25Heading(
+                          text: "Welcome back",
+                          color: AppColors.whiteColor,
+                        ),
                       ],
                     ),
                   ),
@@ -62,13 +69,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // buildCustomContainer(),
+                        SizedBox(height: 20.h),
+                        Center(child: Image.asset(ImageRes.user)),
                         SizedBox(height: 20.h),
                         appTextField(
                           inputValidity: validationState.isEmailFieldValid,
                           controller: _loginController.emailController,
                           text: "Email address",
-                          iconName: "assets/icons/lock.png",
-                          hintText: "Enter your Corporate ID",
                           obscureText: false,
                           func: (value) {
                             ref
@@ -82,8 +90,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           inputValidity: validationState.isPasswordFieldValid,
                           controller: _loginController.passwordController,
                           text: "Password",
-                          iconName: "assets/icons/lock.png",
-                          hintText: "Enter your password",
                           obscureText: passwordVisibility,
                           func: (value) {
                             ref
@@ -92,9 +98,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             _loginController.validatePasswordField();
                           },
                           suffixIcon: GestureDetector(
-                            child: Icon(passwordVisibility
-                                ? Icons.visibility_off
-                                : Icons.visibility),
+                            child: Icon(
+                              passwordVisibility
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: passwordVisibility
+                                  ? AppColors.primarySecondaryElementText
+                                  : AppColors
+                                      .primarySecondaryElementText, // Example colors
+                            ),
                             onTap: () {
                               ref
                                   .read(visibilityNotifierProvider.notifier)
@@ -103,23 +115,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                         ),
                         SizedBox(height: 20.h),
-                        const SizedBox(height: 20),
                         Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
+                          padding: const EdgeInsets.only(left: 17.0),
                           child: RichText(
                             text: TextSpan(
-                              text: 'Forgot credentials?',
-                              style: const TextStyle(
-                                color: AppColors.textColorLightPurple,
-                                fontSize: 17,
-                                fontFamily: 'GothamLight',
-                              ),
                               children: <TextSpan>[
                                 TextSpan(
-                                  text: ' Click here',
+                                  text: ' Forgot Password?',
                                   style: const TextStyle(
-                                    color: AppColors.unionColor,
-                                    fontSize: 17,
+                                    color: AppColors.greyCard,
+                                    fontSize: 14,
                                     fontFamily: 'GothamLight',
                                   ),
                                   recognizer: TapGestureRecognizer()
@@ -136,50 +141,52 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height * 0.3,
+                    height: size.height * 0.2,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(height: 20.h),
-                        Container(
-                          padding: EdgeInsets.only(left: 20.w, right: 20.w),
-                          child: Center(
-                            child: appButton(
-                              buttonName: "Login",
-                              isLogin: true,
-                              context: context,
-                              func: () {
-                                _loginController.validatePasswordField();
-                                _loginController.validateEmailField();
-                                final isValidInputs =
-                                    ref.read(validationProvider).isValidInputs;
-                                if (isValidInputs) {
-                                  _loginController.handleLogin(context);
-                                } else {
-                                  toastInfo("Invalid inputs");
-                                }
-                              },
-                            ),
+                        SizedBox(height: 2.h),
+                        Center(
+                          child: appButton(
+                            buttonName: "Login",
+                            isLogin: true,
+                            context: context,
+                            func: () {
+                              _loginController.validatePasswordField();
+                              _loginController.validateEmailField();
+                              final isValidInputs =
+                                  ref.read(validationProvider).isValidInputs;
+                              if (isValidInputs) {
+                                _loginController.handleLogin(context);
+                              } else {
+                                toastInfo("Invalid inputs");
+                              }
+                            },
                           ),
                         ),
                         RichText(
                           text: TextSpan(
-                            text: 'Dont have an account?',
+                            text: 'I dont have an account?',
                             style: const TextStyle(
                               color: AppColors.textColorLightPurple,
-                              fontSize: 17,
+                              fontSize: 13,
                               fontFamily: 'GothamLight',
                             ),
                             children: [
                               TextSpan(
-                                text: ' Sign Up',
+                                text: ' Create account',
                                 style: const TextStyle(
                                   color: AppColors.unionColor,
-                                  fontSize: 17,
+                                  fontSize: 13,
                                   fontFamily: 'GothamLight',
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
+                                  ..onTap = () {
+                                    Navigator.of(context)
+                                        .pushNamedAndRemoveUntil(
+                                            SignupScreen.routeName,
+                                            (r) => false);
+                                  },
                               ),
                             ],
                           ),
@@ -193,13 +200,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           ),
           if (loader) buildCustomCircularProgressIndicator(),
         ],
-      ),
-      bottomNavigationBar: Container(
-        height: 50,
-        color: AppColors.textColor800,
-        child: const Image(
-          image: AssetImage('assets/icons/union_logo_white.png'),
-        ),
       ),
     );
   }
