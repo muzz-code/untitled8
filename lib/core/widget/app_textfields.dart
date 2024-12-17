@@ -38,9 +38,6 @@ Widget appTextField({
             color: AppColors.lightGreenBackgroundColor),
         child: Row(
           children: [
-            Container(
-              margin: EdgeInsets.only(left: 17.w),
-            ),
             SizedBox(
               width: textFieldWidth ?? 280.w,
               height: textFieldHeight ?? 50.h,
@@ -49,7 +46,7 @@ Widget appTextField({
                 style: const TextStyle(
                     color: AppColors.primarySecondaryElementText,
                     fontFamily: 'GothamLight'),
-                onChanged: (value) => func!(value),
+                onChanged: (value) => func ?? (value),
                 keyboardType: isNumberKeyboard == true
                     ? TextInputType.number // Set number keyboard if true
                     : TextInputType.text,

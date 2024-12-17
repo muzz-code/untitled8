@@ -103,6 +103,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                           final isValidInput =
                               ref.read(validationProvider).isValidInputs;
                           if(isValidInput){
+                            _signUpController.handleSignUp();
                             _signUpController.navigateToOtpScreen(context);
                           }
                         }),

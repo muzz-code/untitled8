@@ -148,11 +148,10 @@ AppBar customAppBar(BuildContext context, String appBarText,
     bool postFixedImage = true,
     final dynamic Function()? func}) {
   return AppBar(
+    scrolledUnderElevation: 0.0,
     automaticallyImplyLeading: false,
     backgroundColor: Colors.white,
-    // Keep the background color white
     elevation: 0,
-    // Remove the shadow under the AppBar if present
     title: Container(
       padding: const EdgeInsets.only(top: 10.0),
       color: Colors.white,
